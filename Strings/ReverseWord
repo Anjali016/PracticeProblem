@@ -1,0 +1,35 @@
+
+import java.lang.*;
+
+public class ReverseWord{
+	
+	public static void main(){
+	String input = "How are you";
+	reverseWord(input);
+	}
+        
+	public static void reverseWord(String str){
+	   String[] string = str.split(" ");
+	   for(String s : string) {
+	   	reverse(s);
+	   }
+	for(String t : string) System.out.print(t);
+	}
+
+	private static void reverse(String str){
+	if(str.length <= 1) return ;
+	else {
+		swapFirstLast(str);
+		reverse(str.subString(1,str.length-2));	
+    	}
+	}
+
+	private static void swapFirstLast(String str){
+	char temp = str.charAt(0);
+        str.charAt(0) = str.charAt(str.length-1);
+	str.charAt(0) = temp; 
+	}
+
+
+	
+}
