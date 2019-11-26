@@ -23,12 +23,20 @@ public class TreeViews {
     root.right.left.right  = new TreeNode(8);
     root.right.right  = new TreeNode(7);
     root.right.right.right  = new TreeNode(9);
+    TreeNode root1 = new TreeNode(1);
+    root1.left = new TreeNode(2);
+    root1.right = new TreeNode(3);
+    root1.left.right = new TreeNode(4);
+    root1.left.right.right = new TreeNode(5);
+    root1.left.right.right.right = new TreeNode(6);
     System.out.println("Vertical View");
     verticalPrint(root);
     System.out.println("Top View");
     topView(root);
-    System.out.println("Bottom  View");
-    bottomView(root);
+    System.out.println("Another top view");
+    topView(root1);
+//    System.out.println("Bottom  View");
+  //  bottomView(root);
     
   }
 
@@ -56,23 +64,22 @@ public class TreeViews {
 
   // TopView
   public static void topView(TreeNode root) {
-    Map<Integer, List<Integer>> map = new TreeMap<>();
+    Map<Integer, Pair<Integer, Integer>> map = new TreeMap<>();
     int hd = 0;
-    topViewUtil(root, map, hd);
+    int currDepth = 0;
+    topViewUtil(root, map, hd, currDepth);
     for (Integer key : map.keySet()){
-      List<Integer> list = map.get(key);
-      System.out.print(list.get(0) + ", ");
+      System.out.print(map.get(key).getKey() + ", ");
     }
   }
 
-  private static void topViewUtil(TreeNode root, Map<Integer, List<Integer>> map, int hd) {
+  private static void topViewUtil(TreeNode root, Map<Integer, Pair<Integer, Integer>> map, int hd, int currDepth) {
    if (root == null) return ;
    else {
-     List<Integer> list = map.getOrDefault(hd, new ArrayList<Integer>());
-     list.add(root.data);
-     map.put(hd, list);
-     topViewUtil(root.left, map, hd - 1); 
-     topViewUtil(root.right, map, hd + 1); 
+     if (map.get(hd) == null) map.put(hd, new Pair<>(root.data, currDepth));
+     else if (map.get(hd).getValue() >= currDepth) map.put(hd, new Pair<>(root.data, currDepth));
+     topViewUtil(root.left, map, hd - 1, currDepth + 1); 
+     topViewUtil(root.right, map, hd + 1, currDepth + 1); 
    }
   } 
  
