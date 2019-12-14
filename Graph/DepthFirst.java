@@ -1,23 +1,24 @@
 import java.util.*;
 
 public class DepthFirst {
+
   private static class Graph {
     Map<Integer, List<Integer>> graph ;
 
-  public Graph(Map<Integer, List<Integer>> graph) {
-    this.graph = graph;
-  }
+    public Graph(Map<Integer, List<Integer>> graph) {
+      this.graph = graph;
+    }
 
-  public void addEdge(int source, int des) {
-    List<Integer> neighbours = graph.getOrDefault(source, new ArrayList<Integer>());
-    neighbours.add(des);
-    graph.put(source, neighbours);
-  }
+    public void addEdge(int source, int des) {
+      List<Integer> neighbours = graph.getOrDefault(source, new ArrayList<Integer>());
+      neighbours.add(des);
+      graph.put(source, neighbours);
+    }
 
-  public List<Integer> getNeighbours(int node) {
-    return  graph.getOrDefault(node, new ArrayList<Integer>());
-  } 
-}
+    public List<Integer> getNeighbours(int node) {
+      return  graph.getOrDefault(node, new ArrayList<Integer>());
+    } 
+  }
 
   public static void depthFirst(Graph graph, int source) {
     Set<Integer> visited = new HashSet<>();
