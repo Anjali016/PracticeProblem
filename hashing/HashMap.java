@@ -1,11 +1,11 @@
 
 public class HashMap {
-  static	int[] index;
+  static int[] index;
   static int[] value;
 
   public HashMap() {
     index = new int[50];
-    value 	= new int[100];
+    value	= new int[100];
   }
 
   public static void put(int key, int val) {
@@ -22,7 +22,7 @@ public class HashMap {
   }
 
   public static void printMap() {
-    for (int i : index) 	if (i != 0) 	System.out.println(i +" -> "+ value[i]);
+    for (int i : index) if (i != 0) System.out.println(i +" -> "+ value[i]);
   }
 
 
