@@ -22,8 +22,7 @@ public class HashMap {
 			}
 
 			public static void printMap() {
-					for (int i : index) 
-							if (i != 0) 	System.out.println(i +" -> "+ value[i]);
+					for (int i : index) 	if (i != 0) 	System.out.println(i +" -> "+ value[i]);
 			}
 
 

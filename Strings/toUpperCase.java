@@ -1,11 +1,11 @@
 import java.lang.*;
 
 public class toUpperCase{
-	
-	public static void main(String[] args){
-	String s = "abc";
-	String r = toUpperCase(s);
-	for(char c : r.toCharArray()) System.out.print(c);
+
+  public static void main(String[] args){
+	  String s = "abc";
+	  String r = toUpperCase(s);
+	  for (char c : r.toCharArray()) System.out.print(c);
 	}
 
 
@@ -19,5 +19,5 @@ public class toUpperCase{
 			else res.append(c);	
 		}
 	return res.toString();
-}
+	}
 }

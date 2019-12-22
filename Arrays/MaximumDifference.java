@@ -4,7 +4,7 @@ public class MaximumDifference {
   public static int maxDiff(int[] arr) {
     int max = Integer.MIN_VALUE;
     int minSoFar = arr[0];
-    for(int i = 0 ; i < arr.length; i++){
+    for (int i = 0 ; i < arr.length; i++){
       max = Math.max(max, arr[i] - minSoFar);
       minSoFar = Math.min(minSoFar, arr[i]);
     }
