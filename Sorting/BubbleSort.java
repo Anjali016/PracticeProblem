@@ -1,17 +1,15 @@
-
-
 public class BubbleSort {
 
-  public static void main(String[] args){
+  public static void main(String[] args) {
     int[] array = {3, 2, 5, 1, 4, 0};
     int[] res = bubbleSort(array);
     for(int i : res) System.out.print(i + ",");
   }
 
-  private static int[] bubbleSort(int[] arr){
-    for(int size = arr.length - 1; size >= 0; size --){
-      for(int i = 0 ; i < size; i++){
-	if(arr[i] > arr[i+1]) swap(arr, i , i+1); 
+  private static int[] bubbleSort(int[] arr) {
+    for (int size = arr.length - 1; size >= 0; size--) {
+      for (int i = 0; i < size; i++) {
+      	if (arr[i] > arr[i+1]) swap(arr, i , i+1); 
       }
     }
   return arr;
@@ -24,6 +22,4 @@ public class BubbleSort {
       arr[x] = arr[x]^arr[y];
     }
   }  
-
-
 }
