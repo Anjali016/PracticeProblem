@@ -11,12 +11,12 @@ public class SortByAge {
       this.weight = weight;
     } 
   }
-  
+
   static List<Person> sortAge(List<Person> person){
     Collections.sort(person, ageComparator);
     return person;
   }
- 
+
   public static Comparator<Person> ageComparator = new Comparator<Person>() {
     @Override
     public int compare(Person p1, Person p2){ return p1.weight - p2.weight ;}
@@ -32,4 +32,4 @@ public class SortByAge {
     for(Person p : person) System.out.println(p.name + ":" + p.weight);    
   }
 }
-     
+
