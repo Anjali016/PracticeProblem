@@ -12,12 +12,12 @@ public class Factorial {
     else return num * factorial(num - 1);
   }
 
- static  Map<Integer, Integer> map = new HashMap<>();
+  static  Map<Integer, Integer> map = new HashMap<>();
   public static int factDP(int num) {
-   if (num == 0) return 1;
-   else{
-     if (map.containsKey(num)) return map.get(num);
-     else {
+    if (num == 0) return 1;
+    else{
+      if (map.containsKey(num)) return map.get(num);
+      else {
         int res = num * factDP(num - 1);
         map.put(num, res);
         return res;
