@@ -1,11 +1,11 @@
 import java.util.*;
 
 public class InterSectionOfList {
-  
+
   private static class LinkNode {
     int data;
     LinkNode next;
- 
+
     public LinkNode(int data){
       this.data = data;
     }
@@ -18,21 +18,21 @@ public class InterSectionOfList {
       Set<Integer> set = fillSet(head1);
       LinkNode temp = head2;
       while(temp != null && !set.contains(temp.data)){
-         temp = temp.next;
+        temp = temp.next;
       } 
-     return temp;
+      return temp;
     }
- } 
-  
+  } 
+
 
   private static Set<Integer> fillSet(LinkNode head) {
     Set<Integer> set = new HashSet<>();
     LinkNode curr = head;
-      while(curr != null){
-        set.add(curr.data);
-        curr = curr.next;
-      }
-     return set;
+    while(curr != null){
+      set.add(curr.data);
+      curr = curr.next;
+    }
+    return set;
   }
 
   public static void main(String[] args) {
@@ -50,7 +50,7 @@ public class InterSectionOfList {
   }
 
 } 
- 
+
 
 
 

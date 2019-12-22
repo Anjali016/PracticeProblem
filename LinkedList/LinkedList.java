@@ -18,7 +18,7 @@ public class LinkedList {
     if(head == null) return 0;
     else return head.data + sumOfNodes(head.next);
   }
- 
+
   public static ListNode insertAtFront(ListNode head, int item){
     ListNode newNode = new ListNode(item); 
     if (head == null) return newNode;
@@ -29,22 +29,22 @@ public class LinkedList {
     }
   }
 
-   public static ListNode insertAtEnd(ListNode head, int item) {
-     ListNode newNode = new ListNode(item); 
-     if (head == null) return newNode;
-     else if (head.next == null) { 
-       head.next = newNode;
-       newNode.next =  null;
-       return head;
-      }
+  public static ListNode insertAtEnd(ListNode head, int item) {
+    ListNode newNode = new ListNode(item); 
+    if (head == null) return newNode;
+    else if (head.next == null) { 
+      head.next = newNode;
+      newNode.next =  null;
+      return head;
+    }
     else return insertAtEnd(head.next, item);
-   }
+  }
 
   public static void printList(ListNode head) {
     if(head == null) return;
     else {
-     System.out.print(head.data + ", " );
-     printList(head.next);
+      System.out.print(head.data + ", " );
+      printList(head.next);
     }
   }
 
@@ -65,7 +65,7 @@ public class LinkedList {
     System.out.println("LinkedList after inserting at End:");
     printList(head);
     System.out.println("Sum of Nodes :" + sumOfNodes(head));
-  
+
   }  
 
 

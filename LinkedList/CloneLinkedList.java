@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class CloneLinkedList {
  
   private static class LinkNode {
@@ -19,56 +20,61 @@ public class CloneLinkedList {
     head.next.next.next = new LinkNode(17);
     LinkNode cloneHead = cloneList(head);
     System.out.print(cloneHead.data);
-   
   }
  
   public static LinkNode cloneList(LinkNode head) {
     Map<Integer, Integer> links = new HashMap<>();
-    LinkNode head2 = getSingleLinkedList(head);
-    LinkNode temp = head;
-    while (temp.next != null) {
-      LinkNode randomNode = temp.random;
-      int tempIndex = getIndex(head, temp);
-      int randomIndex = getIndex(head, randomNode);
-      if (randomNode != null) links.put(tempIndex, randomIndex);
-      temp = temp.next;
-    }
-    LinkNode curr = head2;
-    int count = 1;
-    while (curr.next != null) {
-      if (links.containsKey(count)) {
-        LinkNode rand = getNthNode(head2, links.get(count));
-        curr.random = rand;
-    }
-    curr = curr.next;
-    count++;
-    }
-   return head2;
+    LinkNode newHead = copySingleLinkedList(head);
+    links = fillLinksMap(head);
+    linkRandomPtr(newHead, links);
+   return newHead;
   }
 
-  private static LinkNode getSingleLinkedList(LinkNode head) {
-    LinkNode temp = new LinkNode(head.data);
-    LinkNode curr = temp;
+  private static Map<Integer, Integer> fillLinksMap(LinkNode head) {
+    Map<Integer, Integer> links = new HashMap<>();
+    LinkNode itr = head;
+    while (itr.next != null) {
+      LinkNode randomNode = itr.random;
+      int itrIndex = getIndex(head, itr);
+      int randomIndex = getIndex(head, randomNode);
+      if (randomNode != null) links.put(itrIndex, randomIndex);
+      itr = itr.next;
+   }
+   return links;
+  }
+
+  private static void linkRandomPtr(LinkNode head, Map<Integer, Integer> links) {
+    LinkNode itr = head;
+    int count = 1;
+    while (itr.next != null) {
+      if (links.containsKey(count)) {
+        LinkNode rand = getNthNode(head, links.get(count));
+        itr.random = rand;
+    }
+    itr = itr.next;
+    count++;
+    }
+  }
+
+  private static LinkNode copySingleLinkedList(LinkNode head) {
+    LinkNode newListHead  = new LinkNode(head.data);
+    LinkNode curr = head;
     while (curr.next != null) {
       LinkNode newNode = new LinkNode(curr.next.data);
-      temp.next = newNode;
-      temp = temp.next;
+      newListHead.next = newNode;
+      newListHead = newListHead.next;
       curr = curr.next;
     }
-  return temp;
+    return newListHead;
   }
-  
+
   private static int getIndex(LinkNode head, LinkNode target) {
     if (head == target) return 1;
     else return 1 + getIndex(head.next, target);
   }
 
-  private static LinkNode getNthNode(LinkNode head2, int n) {
-    if (n == 0) return head2;
-    else return getNthNode(head2.next, n - 1);
+  private static LinkNode getNthNode(LinkNode newHead, int n) {
+    if (n == 0) return newHead;
+    else return getNthNode(newHead.next, n - 1);
   }
-
-
-     
-
 }
