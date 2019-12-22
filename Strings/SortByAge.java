@@ -12,18 +12,15 @@ public class SortByAge {
     } 
   }
   
-
   static List<Person> sortAge(List<Person> person){
-    Collections.sort(person, new SortAge());
+    Collections.sort(person, ageComparator);
     return person;
   }
-
  
-  private static class SortAge implements Comparator<Person> {
-  
+  public static Comparator<Person> ageComparator = new Comparator<Person>() {
     @Override
     public int compare(Person p1, Person p2){ return p1.weight - p2.weight ;}
-  }
+  };
 
   public static void main(String[] args){
     List<Person> person = new ArrayList<>();
