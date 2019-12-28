@@ -1,6 +1,6 @@
 
 public class PrintEvenOdd {
-  
+
   private static final Object lock = new Object();
 
   public static Runnable printEven = () -> {
@@ -12,10 +12,10 @@ public class PrintEvenOdd {
           lock.wait();
         }
         catch(InterruptedException e){
-         e.printStackTrace();
+          e.printStackTrace();
         } 
         finally {
-         lock.notify();
+          lock.notify();
         }
       }
     }
@@ -33,8 +33,8 @@ public class PrintEvenOdd {
           e.printStackTrace();
         }
         finally {
-         lock.notify();
-         }
+          lock.notify();
+        }
       }
     }
   };
@@ -42,7 +42,7 @@ public class PrintEvenOdd {
   public static void main(String[] args) {
     Thread even = new Thread(printEven, "EvenThread");
     Thread odd = new Thread(printOdd, "OddThread");
-     
+
     even.start();
     odd.start();
 

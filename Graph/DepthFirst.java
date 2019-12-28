@@ -32,7 +32,6 @@ public class DepthFirst {
     System.out.print(current + " ,");
     for(int node : graph.getNeighbours(current))
       if(!visited.contains(node)) {
-        visited.add(node); 
         depthFirstUtil(graph, visited, node);
       }
   }
